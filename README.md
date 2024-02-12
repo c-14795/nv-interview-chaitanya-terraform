@@ -34,14 +34,14 @@
     - Inserts sample data into the gcs location (**_spark job_**)
     - Reads the pii mapping and generates the masked data (**_spark job_**)
     - Generates the delta format for both masked data and normal data (**_spark job_**)
-    - The code for jobs is kept in this [repo] (https://github.com/c-14795/nv-spark-jobs/tree/master)
+    - The code for jobs is kept in this [repo](https://github.com/c-14795/nv-spark-jobs/tree/master)
     - As a best practice A CI CD pipeline will zip the code and put it in gcs repo for pyspark to pickup.
     
 
 ## Trino deployment
 - Dataproc serverless metastore is considered as hive metastore
 - Port forwarding is used, instead of load balancer.
-### created the data and read from trino
+### created the data and read from trino both delta and parquet file formats
 ![img.png](img.png)
 ![img_5.png](img_5.png)
 ![img_6.png](img_6.png)
