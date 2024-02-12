@@ -10,6 +10,7 @@
 
 
 ## Kubernetes deployment
+![img_4.png](img_4.png)
 1. For creating kubernetes cluster below components are needed
     1. Node pools
     2. Networks (VPC, NAT, SUBNET) 
