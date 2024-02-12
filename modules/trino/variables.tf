@@ -50,3 +50,7 @@ variable "gke_details" {
   description = "The GCP project for terraform space"
   type        = map(string)
 }
+variable "project" {
+  description = "The GCP project for terraform space"
+  type        = string
+}

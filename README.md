@@ -43,6 +43,12 @@
 - Port forwarding is used, instead of load balancer.
 ### created the data and read from trino
 ![img.png](img.png)
+![img_5.png](img_5.png)
+![img_6.png](img_6.png)
+![img_7.png](img_7.png)
+![img_8.png](img_8.png)
+![img_9.png](img_9.png)
+![img_10.png](img_10.png)
 
 ## Task details
 1. An attempt has been made to read the config map pii fields in airflow, which has been unsuccessful.

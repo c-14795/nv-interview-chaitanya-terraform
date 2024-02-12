@@ -186,10 +186,12 @@ eventListenerProperties: {}
 additionalCatalogs:
   gcs: |-
     connector.name=hive
-    hive.metastore.uri=thrift://10.119.192.27:9080
+    hive.metastore.uri=${thrift_metastore_uri}
     hive.recursive-directories=true
     hive.storage-format=parquet
-
+  delta: |-
+    connector.name=delta_lake
+    hive.metastore.uri=${thrift_metastore_uri}
 # Array of EnvVar (https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#envvar-v1-core)
 env: []
 
@@ -244,10 +246,10 @@ auth: {}
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: true
+  create: false
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: ""
+  name: "sa-nv-interview-chaitanya-k8-trino"
   # Annotations to add to the service account
   annotations: {}
 

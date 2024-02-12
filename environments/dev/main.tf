@@ -78,5 +78,6 @@ module "trino" {
   configs              = var.trino_configs
   gke_details          = module.gke_cluster.gke_details
   thrift_metastore_uri = module.hive_metastore.dataproc_hive_metastore_cluster
+  project              = var.project
 }
 
