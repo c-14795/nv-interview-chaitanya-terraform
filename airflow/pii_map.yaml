@@ -1,8 +1,0 @@
-pii-map:
-    - field: username
-      table: users
-      type: string
-    - field: metadata.secret
-      table: users
-      type: json
-    # Add more values as needed
