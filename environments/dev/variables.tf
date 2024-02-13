@@ -64,5 +64,10 @@ variable "services_to_be_enabled" {
   type = list(string)
   description = "list of services to be enabled before proceeding and disabled post destroying"
 }
+variable "wke_gcp_module_version" {
+  type = string
+  description = "version for this module - https://registry.terraform.io/modules/terraform-google-modules/kubernetes-engine/google/latest/submodules/ "
+
+}
 
 

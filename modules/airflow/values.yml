@@ -105,12 +105,18 @@ airflow:
   ## extra VolumeMounts for the airflow Pods
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-persistent-volumes.md
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-files.md
-  extraVolumeMounts: [ ]
+  extraVolumeMounts:
+    - name: pii-config
+      mountPath: /opt/airflow/config/pii-config
+      readOnly: true
 
   ## extra Volumes for the airflow Pods
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-persistent-volumes.md
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-files.md
-  extraVolumes: [ ]
+  extraVolumes:
+    - name: pii-config
+      configMap:
+        name: pii-config
 
   ## configs generating the `pod_template.yaml` file for `AIRFLOW__KUBERNETES__POD_TEMPLATE_FILE`
   ## [NOTE] the `dags.gitSync` values will create a git-sync init-container in the pod

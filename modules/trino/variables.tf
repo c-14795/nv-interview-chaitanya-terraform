@@ -54,3 +54,12 @@ variable "project" {
   description = "The GCP project for terraform space"
   type        = string
 }
+variable "existing_sa" {
+  description = "existing sa for work load federation"
+  type        = string
+}
+variable "wke_gcp_module_version" {
+  type = string
+  description = "version for this module - https://registry.terraform.io/modules/terraform-google-modules/kubernetes-engine/google/latest/submodules/ "
+
+}

@@ -18,14 +18,14 @@ provider "kubernetes" {
 resource "helm_release" "airflow" {
   #  count = var.deploy_airflow ? 1 : 0
 
-  name             = "airflow"
-  chart            = "airflow"
-  repository       = "https://airflow.apache.org"
-  version          = var.helm_version
-  namespace        = var.namespace
+  name       = "airflow"
+  chart      = "airflow"
+  repository = "https://airflow.apache.org"
+  version    = var.helm_version
+  namespace  = var.namespace
   #  gke_cluster_name = var.gke_cluster_name
   #  gke
-  values           = [
+  values     = [
     templatefile(var.airflow_config_values, {}),
   ]
 
@@ -43,15 +43,17 @@ resource "helm_release" "airflow" {
 }
 
 module "airflow-ns-workload-identity" {
-  source       = "terraform-google-modules/kubernetes-engine/google//modules/workload-identity"
-  version      = "30.0.0"
-  name         = "sa-nv-interview-chaitanya"
-  k8s_sa_name  = "sa-nv-interview-chaitanya-k8"
-  namespace    = var.namespace
-  project_id   = var.project
-  cluster_name = var.gke_cluster_name
-  annotate_k8s_sa = true
-  roles        = [
+  source              = "terraform-google-modules/kubernetes-engine/google//modules/workload-identity"
+#  version             = var.wke_gcp_module_version
+  version             = "30.0.0"
+  use_existing_gcp_sa = true
+  name                = var.existing_sa
+  k8s_sa_name         = "sa-nv-interview-chaitanya-k8"
+  namespace           = var.namespace
+  project_id          = var.project
+  cluster_name        = var.gke_cluster_name
+  annotate_k8s_sa     = true
+  roles               = [
     "roles/storage.admin",
     "roles/compute.admin",
     "roles/dataproc.admin",
