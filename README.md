@@ -1,5 +1,8 @@
 # nv-interview-chaitanya-terraform
 
+## Flow
+![Assignemt flow nv.png](readme_stuff%2FAssignemt%20flow%20nv.png)
+
 ## Terraform folders
 1. [environments](environments)  This directory holds configurations for different environments like development, staging, and production. Each environment has its own set of Terraform configuration files (main.tf, variables.tf, outputs.tf, terraform.tfvars).
 2. [modules](modules) This directory contains reusable modules for different components of infrastructure. Each module has its own directory with main.tf, variables.tf, and outputs.tf defining the module's functionality.
@@ -17,7 +20,7 @@
     3. Enabling of GCP services, Service account creation
     4. For this assessment scope, went ahead using default network.
 2. Workload identity federation has been enabled for seamless authentication, 
-3. Service account creation and binding to Workload federation has been attempted.
+3. Service account creation and binding to Workload federation has been done.
 4. Config map with pii fields info has been created in airflow-ns namespace.
 
 ## Airflow deployment
@@ -51,8 +54,8 @@
 ![img_10.png](readme_stuff/img_10.png)
 
 ## Task details
-1. An attempt has been made to read the config map pii fields in airflow, which has been unsuccessful.
-2. To ensure the dynamic nature PII fields has been added as a variable to airflow and passed to the job.
+1. An attempt has been made to read the config map pii fields in airflow, which has been successful.
+2. To ensure the dynamic nature PII fields mount path has been added as a variable to airflow and passed to the job.
    1. Structure of pii map goes below
       ![img_3.png](readme_stuff/img_3.png)
       1. field represents column,
