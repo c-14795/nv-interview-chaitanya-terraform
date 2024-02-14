@@ -21,3 +21,8 @@ variable "project" {
   type        = string
   description = "project id"
 }
+
+variable "roles" {
+ type = list(string)
+  description = "roles for that service account"
+}

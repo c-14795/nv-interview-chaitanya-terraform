@@ -17,6 +17,3 @@ output "gke_details" {
   value = module.gke_cluster.gke_details
   sensitive = true
 }
-output "gcp_service_account" {
-  value = module.airflow.gcp_service_account
-}

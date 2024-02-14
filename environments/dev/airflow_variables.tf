@@ -18,7 +18,7 @@ variable "airflow_config_values" {
   description = "airflow config values"
   type        = string
 }
-variable "k8_cluster_configs" {
+variable "pii_map_mount_path" {
   description = "k8 cluster config files"
   type        = string
 }

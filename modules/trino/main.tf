@@ -39,15 +39,6 @@ module "trino-ns-workload-identity" {
   project_id          = var.project
   cluster_name        = var.gke_cluster_name
   annotate_k8s_sa     = true
-  roles               = [
-    "roles/storage.admin",
-    "roles/compute.admin",
-    "roles/dataproc.admin",
-    "roles/metastore.admin",
-    "roles/iam.serviceAccountUser",
-    "roles/iam.serviceAccountAdmin",
-    "roles/container.admin"
-  ]
   providers = {
     kubernetes = kubernetes
   }

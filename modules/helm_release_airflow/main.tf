@@ -15,30 +15,23 @@ provider "kubernetes" {
   token                  = var.gke_details.token
 }
 
-resource "helm_release" "airflow" {
+
+resource "helm_release" "airflow-helm" {
   #  count = var.deploy_airflow ? 1 : 0
 
-  name       = "airflow"
+  name       = "airflow-helm"
   chart      = "airflow"
-  repository = "https://airflow.apache.org"
+  repository = "https://airflow-helm.github.io/charts"
   version    = var.helm_version
   namespace  = var.namespace
   #  gke_cluster_name = var.gke_cluster_name
   #  gke
   values     = [
-    templatefile(var.airflow_config_values, {}),
+    templatefile(var.airflow_config_values, {
+      pii_map_mount_path = var.pii_map_mount_path
+    }),
   ]
-
-
   wait = false
-  set {
-    name  = "defaultAirflowTag"
-    value = var.default_tag
-  }
-  set {
-    name  = "executor"
-    value = var.executor
-  }
 
   depends_on = [module.airflow-ns-workload-identity]
 

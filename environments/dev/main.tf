@@ -58,18 +58,35 @@ module "service_account_federation" {
   project                      = var.project
   service_account_display_name = var.federation_sa["display_name"]
   service_account_id           = var.federation_sa["account_id"]
+  roles                        = var.federation_sa["roles"]
 }
 
 ## airflow deployment module...
+#module "airflow" {
+#  source                 = "../../modules/airflow"
+#  default_tag            = var.airflow_tag
+#  executor               = var.airflow_executor
+#  gke_cluster_name       = module.gke_cluster.cluster_name
+#  helm_version           = var.airflow_helm_chart_version
+#  namespace              = var.namespaces_in_gke["airflow_ns"].name
+#  airflow_config_values  = var.airflow_config_values
+#  k8_cluster_configs     = var.k8_cluster_configs
+#  project                = module.gcp_services.project_id
+#  gke_details            = module.gke_cluster.gke_details
+#  pii_map_values         = var.pii_map_values
+#  existing_sa            = module.service_account_federation.account_id
+#  wke_gcp_module_version = var.wke_gcp_module_version
+#}
+
 module "airflow" {
-  source                 = "../../modules/airflow"
+  source                 = "../../modules/helm_release_airflow"
   default_tag            = var.airflow_tag
   executor               = var.airflow_executor
   gke_cluster_name       = module.gke_cluster.cluster_name
   helm_version           = var.airflow_helm_chart_version
   namespace              = var.namespaces_in_gke["airflow_ns"].name
   airflow_config_values  = var.airflow_config_values
-  k8_cluster_configs     = var.k8_cluster_configs
+  pii_map_mount_path     = var.pii_map_mount_path
   project                = module.gcp_services.project_id
   gke_details            = module.gke_cluster.gke_details
   pii_map_values         = var.pii_map_values
@@ -82,7 +99,7 @@ module "trino" {
   source                 = "../../modules/trino"
   gke_cluster_name       = module.gke_cluster.cluster_name
   helm_version           = var.trino_helm_chart_version
-  k8_cluster_configs     = var.k8_cluster_configs
+#  k8_cluster_configs     = var.k8_cluster_configs
   namespace              = var.namespaces_in_gke["trino_ns"].name
   configs                = var.trino_configs
   gke_details            = module.gke_cluster.gke_details

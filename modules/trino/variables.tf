@@ -13,10 +13,10 @@ variable "gke_cluster_name" {
   description = "gke_cluster_name"
 }
 
-variable "k8_cluster_configs" {
-  description = "k8 cluster config files"
-  type        = string
-}
+#variable "k8_cluster_configs" {
+#  description = "k8 cluster config files"
+#  type        = string
+#}
 
 variable "configs" {
   description = "trino config files"
